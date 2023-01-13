@@ -1,7 +1,7 @@
 import React from "react";
 
-const TodoCounter = () => {
-  return <h2 className="subtitle">You have completed 2 of 3 "to do's"</h2>;
+const TodoCounter = (props) => {
+  return <h2 className="subtitle">You have completed {props.completed} of {props.total} "to do's"</h2>;
 };
 
 export { TodoCounter };

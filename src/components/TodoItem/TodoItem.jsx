@@ -3,9 +3,9 @@ import "./todo-item.css"
 
 const TodoItem = (props) => {
   return <li>
-    <button className="delete">X</button>
-    <p className={props.completed && "todo-completed"}>{props.text}</p>
-    <button className="check">✔</button>
+    <button onClick={props.onDelete} className="delete">X</button>
+    <p className={props.completed ? "todo-completed" : undefined}>{props.text}</p>
+    <button onClick={props.onComplete} className="check">✔</button>
   </li>;
 };
 
