@@ -1,0 +1,47 @@
+li {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  position: relative;
+  border-bottom: 1px solid var(--darker-beige);
+}
+
+li .delete,
+.check {
+  position: absolute;
+  top: 0.1rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-family: var(--handwrited);
+  font-size: 1.5rem;
+  color: var(--darker-beige);
+}
+
+.delete:hover,
+.check:hover {
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: red;
+}
+
+li p {
+  font-family: var(--handwrited);
+  font-size: 1.8rem;
+  margin: 0 60px;
+}
+
+.todo-completed {
+  text-decoration: line-through;
+  color: var(--darker-beige);
+}
+
+.check {
+  left: 20rem;
+}
+
+.check:hover {
+  color: greenyellow;
+}

@@ -1,0 +1,7 @@
+@import "@vars";
+
+body {
+  background-color: var(--principal-black);
+  margin: 0;
+}
+

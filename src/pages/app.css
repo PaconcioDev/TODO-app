@@ -1,0 +1,36 @@
+@import "@vars";
+
+#app {
+  display: flex;
+  justify-content: center;
+  min-height: 84vh;
+  padding: 3rem;
+}
+
+#create-todos-container {
+  background-color: var(--container-grey);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 4rem 1rem;
+}
+
+#todos-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2rem 0 4rem;
+}
+
+#create-todos-container, #todos-container {
+  margin-top: 4rem;
+  min-width: 24rem;
+  max-height: 800px;
+}
+
+.subtitle {
+  color: var(--subtitle-beige);
+  font-size: 2rem;
+  margin-top: 0;
+  text-align: center;
+  font-family: var(--machine);
+}
