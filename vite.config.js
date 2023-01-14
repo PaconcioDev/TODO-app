@@ -12,5 +12,6 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@vars": path.resolve(__dirname, "./src/css-vars/_vars.css"),
     }
-  }
+  },
+  base: "/todo-app/"
 })
