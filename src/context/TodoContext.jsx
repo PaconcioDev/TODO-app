@@ -1,25 +1,26 @@
 import React from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
-const TodoContainerContext = React.createContext();
+const TodoContext = React.createContext();
+
+// const fakeTodos = [
+//   {
+//     text: "Fake Todo 1",
+//     completed: false,
+//   },
+//   {
+//     text: "Fake Lol 2",
+//     completed: false,
+//   },
+//   {
+//     text: "Fake Wow 3",
+//     completed: true,
+//   },
+// ];
 
 function TodoProvider(props) {
-  const fakeTodos = [
-    {
-      text: "Fake Todo 1",
-      completed: false,
-    },
-    {
-      text: "Fake Lol 2",
-      completed: false,
-    },
-    {
-      text: "Fake Wow 3",
-      completed: true,
-    },
-  ];
-
   const [searchValue, setSearchValue] = React.useState("");
-  const [todos, setTodos] = React.useState(fakeTodos);
+  const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
@@ -34,23 +35,35 @@ function TodoProvider(props) {
     });
   } else {
     searchedTodos = todos;
-  }
+  } 
+
+  const [newTodoValue, setNewTodoValue] = React.useState("")
+
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      text: text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+    setNewTodoValue("");
+  };
 
   const toggleCompleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (
-    <TodoContainerContext.Provider
+    <TodoContext.Provider
       value={{
         totalTodos,
         completedTodos,
@@ -59,11 +72,14 @@ function TodoProvider(props) {
         searchedTodos,
         toggleCompleteTodo,
         deleteTodo,
+        addTodo,
+        newTodoValue,
+        setNewTodoValue,
       }}
     >
       {props.children}
-    </TodoContainerContext.Provider>
+    </TodoContext.Provider>
   );
 }
 
-export {TodoContainerContext, TodoProvider}
+export { TodoContext, TodoProvider };

@@ -3,11 +3,11 @@ import { TodoCounter } from "@components/TodoCounter/TodoCounter.jsx";
 import { TodoItem } from "@components/TodoItem/TodoItem.jsx";
 import { TodoList } from "@components/TodoList/TodoList.jsx";
 import { TodoSearch } from "@components/TodoSearch/TodoSearch.jsx";
-import { TodoContainerContext } from "../../context/TodoContainerContext";
+import { TodoContext } from "../../context/TodoContext";
 import "./todos-container.css";
 
 const TodosContainer = () => {
-  const { searchedTodos, toggleCompleteTodo, deleteTodo } = React.useContext(TodoContainerContext);
+  const { searchedTodos, toggleCompleteTodo, deleteTodo } = React.useContext(TodoContext);
 
   return (
     <>

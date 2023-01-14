@@ -1,8 +1,10 @@
 import React from "react";
-import "./create-todo-button.css"
+import { TodoContext } from "../../context/TodoContext";
+import "./create-todo-button.css";
 
 const CreateTodoButton = () => {
-  return <button id="create-todo-btn">✔</button>;
+  const { addTodo, newTodoValue } = React.useContext(TodoContext);
+  return <button onClick={() => addTodo(newTodoValue)} id="create-todo-btn">✔</button>;
 };
 
 export { CreateTodoButton };

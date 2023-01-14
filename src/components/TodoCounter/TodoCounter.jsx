@@ -1,8 +1,8 @@
 import React from "react";
-import { TodoContainerContext } from "../../context/TodoContainerContext";
+import { TodoContext } from "../../context/TodoContext";
 
 const TodoCounter = () => {
-  const {totalTodos, completedTodos} = React.useContext(TodoContainerContext)
+  const {totalTodos, completedTodos} = React.useContext(TodoContext)
   return <h2 className="subtitle">You have completed {completedTodos} of {totalTodos} "to do's"</h2>;
 };
 
