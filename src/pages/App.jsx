@@ -1,5 +1,6 @@
 import { CreateTodoContainer } from "@containers/CreateTodoContainer/CreateTodoContainer.jsx";
 import { TodosContainer } from "@containers/TodosContainer/TodosContainer.jsx";
+import { TodoProvider } from "../context/TodoContainerContext";
 import "./app.css";
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
         <CreateTodoContainer />
       </section>
       <section id="todos-container">
-        <TodosContainer />
+        <TodoProvider>
+          <TodosContainer />
+        </TodoProvider>
       </section>
     </div>
   );

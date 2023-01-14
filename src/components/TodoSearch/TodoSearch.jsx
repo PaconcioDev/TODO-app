@@ -1,9 +1,12 @@
 import React from "react";
+import { TodoContainerContext } from "../../context/TodoContainerContext";
 import "./todo-search.css";
 
-const TodoSearch = (props) => {
+const TodoSearch = () => {
+  const {searchValue, setSearchValue} = React.useContext(TodoContainerContext)
+
   const onSearchValueChange = (e) => {
-    props.setSearchValue(e.target.value)
+    setSearchValue(e.target.value)
   };
 
   return (
@@ -11,7 +14,7 @@ const TodoSearch = (props) => {
       <input
         placeholder="I have to..."
         onChange={onSearchValueChange}
-        value={props.searchValue}
+        value={searchValue}
         />
     </div>
   );
