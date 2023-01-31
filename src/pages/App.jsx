@@ -7,12 +7,8 @@ function App() {
   return (
     <TodoProvider>
       <div id="app">
-        <section id="create-todos-container">
-          <CreateTodoContainer />
-        </section>
-        <section id="todos-container">
-          <TodosContainer />
-        </section>
+        <CreateTodoContainer />
+        <TodosContainer />
       </div>
     </TodoProvider>
   );

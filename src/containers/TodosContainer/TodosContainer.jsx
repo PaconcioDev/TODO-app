@@ -7,13 +7,21 @@ import { TodoContext } from "../../context/TodoContext";
 import "./todos-container.css";
 
 const TodosContainer = () => {
-  const { searchedTodos, toggleCompleteTodo, deleteTodo } = React.useContext(TodoContext);
+  const {
+    searchedTodos,
+    toggleCompleteTodo,
+    deleteTodo,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+  } = React.useContext(TodoContext);
 
   return (
-    <>
+    <section className="todos-container">
       <h1 className="title">Your "To do's"</h1>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {searchedTodos.map((todo) => (
           <TodoItem
@@ -25,7 +33,7 @@ const TodosContainer = () => {
           />
         ))}
       </TodoList>
-    </>
+    </section>
   );
 };
 

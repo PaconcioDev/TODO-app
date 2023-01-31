@@ -3,21 +3,6 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const TodoContext = React.createContext();
 
-// const fakeTodos = [
-//   {
-//     text: "Fake Todo 1",
-//     completed: false,
-//   },
-//   {
-//     text: "Fake Lol 2",
-//     completed: false,
-//   },
-//   {
-//     text: "Fake Wow 3",
-//     completed: true,
-//   },
-// ];
-
 function TodoProvider(props) {
   const [searchValue, setSearchValue] = React.useState("");
   const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
@@ -35,9 +20,9 @@ function TodoProvider(props) {
     });
   } else {
     searchedTodos = todos;
-  } 
-
-  const [newTodoValue, setNewTodoValue] = React.useState("")
+  }
+  
+  const [newTodoValue, setNewTodoValue] = React.useState("");
 
   const addTodo = (text) => {
     const newTodos = [...todos];
