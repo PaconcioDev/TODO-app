@@ -1,12 +1,10 @@
 import React from "react";
-import { TodoContext } from "../../context/TodoContext";
 import "./create-todo-text.css";
 
-const CreateTodoText = () => {
-  const  {newTodoValue, setNewTodoValue} = React.useContext(TodoContext)
+const CreateTodoText = ({newTodoValue, setNewTodoValue}) => {
   const onChange = (e) => {
-    setNewTodoValue(e.target.value)
-  }
+    setNewTodoValue(e.target.value);
+  };
 
   return (
     <textarea
