@@ -32,19 +32,21 @@ function useTodos() {
     newTodos.push({
       text: text,
       completed: false,
+      id: text+newTodos.length,
     });
     saveTodos(newTodos);
     setNewTodoValue("");
+    console.log(newTodos)
   };
 
-  const toggleCompleteTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
+  const toggleCompleteTodo = (id) => {
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
     saveTodos(newTodos);
   };
-  const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
+  const deleteTodo = (id) => {
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);

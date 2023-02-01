@@ -58,9 +58,9 @@ function App() {
             <TodoItem
               text={todo.text}
               completed={todo.completed}
-              key={todo.text}
-              onComplete={() => toggleCompleteTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
+              key={todo.id}
+              onComplete={() => toggleCompleteTodo(todo.id)}
+              onDelete={() => deleteTodo(todo.id)}
             />
           )}
         />
