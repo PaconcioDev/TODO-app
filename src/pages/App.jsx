@@ -5,6 +5,7 @@ import { CreateTodoButton } from "@components/CreateTodoButton/CreateTodoButton.
 import { TodosContainer } from "@containers/TodosContainer/TodosContainer.jsx";
 import { TodoCounter } from "@components/TodoCounter/TodoCounter.jsx";
 import { TodoSearch } from "@components/TodoSearch/TodoSearch.jsx";
+import { EmptySearchResults } from "@components/EmptySearchResults/EmptySearchResults";
 import { TodoList } from "@components/TodoList/TodoList.jsx";
 import { TodoItem } from "@components/TodoItem/TodoItem.jsx";
 import { FilterButton } from "@components/FilterButton/FilterButton";
@@ -50,6 +51,9 @@ function App() {
           filter={filter}
           searchedTodos={searchedTodos}
           completedTodos={completedTodos}
+          searchText={searchValue}
+          totalTodos={totalTodos}
+          onEmptySearchResults={() => <EmptySearchResults searchText={searchValue}/>}
           render={(todo) => (
             <TodoItem
               text={todo.text}
