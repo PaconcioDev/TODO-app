@@ -12,7 +12,7 @@ const TodoList = ({
   return (
     <section id="list">
       <ul>
-        {totalTodos && !searchedTodos.length && onEmptySearchResults()}
+        {!!totalTodos && !searchedTodos.length && onEmptySearchResults()}
         {filter && completedTodos.map(render)}
         {!filter && searchedTodos.map(render)}
       </ul>
