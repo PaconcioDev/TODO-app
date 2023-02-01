@@ -1,0 +1,9 @@
+.filter-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--title-beige);
+  width: 40px;
+  
+}

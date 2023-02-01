@@ -4,12 +4,16 @@ import { useLocalStorage } from "./useLocalStorage";
 function useTodos() {
   const [searchValue, setSearchValue] = React.useState("");
   const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
-
-  const completedTodos = todos.filter((todo) => todo.completed).length;
+  const completedTodosNumber = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
 
+  const [filter, setFilter] = React.useState(false);
+  const toggleFilter = () => {
+    setFilter(!filter);
+  }; 
+  
   let searchedTodos = [];
-
+  
   if (searchValue.length >= 1) {
     searchedTodos = todos.filter((todo) => {
       const todoText = todo.text.toLowerCase();
@@ -19,7 +23,8 @@ function useTodos() {
   } else {
     searchedTodos = todos;
   }
-
+  const completedTodos = searchedTodos.filter((todo) => todo.completed);
+  
   const [newTodoValue, setNewTodoValue] = React.useState("");
 
   const addTodo = (text) => {
@@ -47,6 +52,7 @@ function useTodos() {
 
   return {
     totalTodos,
+    completedTodosNumber,
     completedTodos,
     searchValue,
     setSearchValue,
@@ -56,6 +62,8 @@ function useTodos() {
     addTodo,
     newTodoValue,
     setNewTodoValue,
+    filter,
+    toggleFilter,
   };
 }
 

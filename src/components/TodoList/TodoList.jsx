@@ -1,10 +1,13 @@
 import React from "react";
 import "./todo-list.css";
 
-const TodoList = (props) => {
+const TodoList = ({ render, filter, searchedTodos, completedTodos }) => {
   return (
     <section id="list">
-      <ul>{props.children}</ul>
+      <ul>
+        {filter && completedTodos.map(render)}
+        {!filter && searchedTodos.map(render)}
+      </ul>
     </section>
   );
 };
