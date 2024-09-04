@@ -1,19 +1,19 @@
-import React from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import React from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
-function useTodos() {
-  const [searchValue, setSearchValue] = React.useState("");
-  const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
+function useTodos () {
+  const [searchValue, setSearchValue] = React.useState('');
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const completedTodosNumber = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
 
   const [filter, setFilter] = React.useState(false);
   const toggleFilter = () => {
     setFilter(!filter);
-  }; 
-  
+  };
+
   let searchedTodos = [];
-  
+
   if (searchValue.length >= 1) {
     searchedTodos = todos.filter((todo) => {
       const todoText = todo.text.toLowerCase();
@@ -24,19 +24,21 @@ function useTodos() {
     searchedTodos = todos;
   }
   const completedTodos = searchedTodos.filter((todo) => todo.completed);
-  
-  const [newTodoValue, setNewTodoValue] = React.useState("");
+
+  const [newTodoValue, setNewTodoValue] = React.useState('');
 
   const addTodo = (text) => {
+    const trimmedText = text.trim();
+    if (trimmedText === '') return;
+
     const newTodos = [...todos];
     newTodos.push({
-      text: text,
+      text,
       completed: false,
-      id: text+newTodos.length,
+      id: text + newTodos.length
     });
     saveTodos(newTodos);
-    setNewTodoValue("");
-    console.log(newTodos)
+    setNewTodoValue('');
   };
 
   const toggleCompleteTodo = (id) => {
@@ -65,7 +67,7 @@ function useTodos() {
     newTodoValue,
     setNewTodoValue,
     filter,
-    toggleFilter,
+    toggleFilter
   };
 }
 

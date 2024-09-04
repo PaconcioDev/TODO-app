@@ -10,9 +10,17 @@
 .todos-container {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 2rem 0 4rem;
   align-items: center;
   margin-top: 4rem;
-  min-width: 24rem;
-  max-height: 792px;
+}
+
+@media screen and (max-width: 1090px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .todos-container {
+    width: 90%;
+    margin-bottom: 4rem;
+  }
 }

@@ -18,3 +18,11 @@
   border: 2px solid var(--form-beige);
   outline: none !important;
 }
+
+@media screen and (max-width: 1024px) {
+  .create-todo-textarea {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box
+  };
+}

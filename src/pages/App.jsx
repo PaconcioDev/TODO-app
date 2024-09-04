@@ -1,19 +1,20 @@
-import React from "react";
-import { CreateTodoContainer } from "@containers/CreateTodoContainer/CreateTodoContainer.jsx";
-import { CreateTodoText } from "@components/CreateTodoText/CreateTodoText.jsx";
-import { CreateTodoButton } from "@components/CreateTodoButton/CreateTodoButton.jsx";
-import { TodosContainer } from "@containers/TodosContainer/TodosContainer.jsx";
-import { TodoCounter } from "@components/TodoCounter/TodoCounter.jsx";
-import { TodoSearch } from "@components/TodoSearch/TodoSearch.jsx";
-import { EmptySearchResults } from "@components/EmptySearchResults/EmptySearchResults";
-import { TodoList } from "@components/TodoList/TodoList.jsx";
-import { TodoItem } from "@components/TodoItem/TodoItem.jsx";
-import { FilterButton } from "@components/FilterButton/FilterButton";
+import React from 'react';
+import { CreateTodoContainer } from '@containers/CreateTodoContainer/CreateTodoContainer.jsx';
+import { CreateTodoText } from '@components/CreateTodoText/CreateTodoText.jsx';
+import { CreateTodoButton } from '@components/CreateTodoButton/CreateTodoButton.jsx';
+import { TodosContainer } from '@containers/TodosContainer/TodosContainer.jsx';
+import { TodoCounter } from '@components/TodoCounter/TodoCounter.jsx';
+import { TodoSearch } from '@components/TodoSearch/TodoSearch.jsx';
+import { EmptySearchResults } from '@components/EmptySearchResults/EmptySearchResults';
+import { TodoList } from '@components/TodoList/TodoList.jsx';
+import { TodoItem } from '@components/TodoItem/TodoItem.jsx';
+import { FilterButton } from '@components/FilterButton/FilterButton.jsx';
+import { CreateTodoModal } from '@components/CreateTodoModal/CreateTodoModal.jsx';
 
-import { useTodos } from "../hooks/useTodos";
-import "./app.css";
+import { useTodos } from '../hooks/useTodos';
+import './app.css';
 
-function App() {
+function App () {
   const {
     searchedTodos,
     toggleCompleteTodo,
@@ -27,11 +28,22 @@ function App() {
     setNewTodoValue,
     addTodo,
     toggleFilter,
-    filter,
+    filter
   } = useTodos();
 
+  const [modal, setModal] = React.useState(false);
+
   return (
-    <div id="app">
+    <div id='app'>
+      {
+        modal &&
+          <CreateTodoModal
+            modalControl={setModal}
+            newTodoValue={newTodoValue}
+            setNewTodoValue={setNewTodoValue}
+            addTodo={addTodo}
+          />
+      }
       <CreateTodoContainer>
         <CreateTodoText
           newTodoValue={newTodoValue}
@@ -53,7 +65,8 @@ function App() {
           completedTodos={completedTodos}
           searchText={searchValue}
           totalTodos={totalTodos}
-          onEmptySearchResults={() => <EmptySearchResults searchText={searchValue}/>}
+          modalControl={setModal}
+          onEmptySearchResults={() => <EmptySearchResults searchText={searchValue} />}
           render={(todo) => (
             <TodoItem
               text={todo.text}

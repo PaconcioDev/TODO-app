@@ -1,19 +1,19 @@
-import React from "react";
-import "./todo-search.css";
+import React from 'react';
+import './todo-search.css';
 
-const TodoSearch = ({searchValue, setSearchValue, children}) => {
+const TodoSearch = ({ searchValue, setSearchValue, children }) => {
   const onSearchValueChange = (e) => {
-    setSearchValue(e.target.value)
+    setSearchValue(e.target.value);
   };
 
   return (
-    <div className="search-container">
+    <div className='search-container'>
       <input
-        placeholder="I have to..."
+        placeholder='I have to...'
         onChange={onSearchValueChange}
         value={searchValue}
-        />
-        {children}
+      />
+      {children}
     </div>
   );
 };
